@@ -1,6 +1,5 @@
 import json
 import regex as re
-from sympy import Id
 
 class Tokenizer:
 
@@ -45,9 +44,6 @@ class Tokenizer:
         if self.special_tokens:
             toks_sorted = sorted(self.special_tokens, key=len, reverse=True)
             split_pattern = "(" + "|".join(re.escape(tok) for tok in toks_sorted) + ")"
-        else:
-            split_pattern = None
-        if split_pattern:
             parts = re.split(split_pattern, text)
         else:
             parts = [text]
